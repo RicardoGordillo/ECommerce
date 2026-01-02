@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/drawer_home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/drawer_carrito"
+        android:title="Carrito"
+        android:icon="@drawable/ic_carrito"/>
+    <item
+        android:id="@+id/drawer_inventario"
+        android:title="Registrar producto"
+        android:icon="@drawable/ic_add"/>
+    <item
+        android:id="@+id/drawer_pedidos"
+        android:title="Listar todos los pedidos"
+        android:icon="@drawable/ic_assignment"/>
+    <item
+        android:id="@+id/drawer_reporteVentas"
+        android:title="Reporte de ventas totales"
+        android:icon="@drawable/ic_money"/>
+    <item
+        android:id="@+id/drawer_masVendidos"
+        android:title="Productos mas vendidos"
+        android:icon="@drawable/ic_trending_up"/>
+    <item
+        android:id="@+id/drawer_perfil"
+        android:title="Perfil"
+        android:icon="@drawable/ic_account"/>
+    <item
+        android:id="@+id/drawer_logout"
+        android:title="Cerrar sesion"
+        android:icon="@drawable/ic_exit"/>
+
+</menu>

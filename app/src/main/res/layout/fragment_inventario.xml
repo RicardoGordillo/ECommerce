@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E3F2FD">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <!-- TÍTULO -->
+            <TextView
+                android:id="@+id/tvTituloRegistro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="REGISTRAR PRODUCTO"
+                android:textColor="#1565C0"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <!-- CATEGORÍA -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Categoría"
+                android:textColor="#0D47A1"
+                android:textStyle="bold" />
+
+            <!-- CARD + RADIOGROUP -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
+
+                <RadioGroup
+                    android:id="@+id/rgTipoProducto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rbComida"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:checked="true"
+                        android:text="Comida"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/montserrat_medium"
+                        app:buttonTint="#1565C0" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rbRopa"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Ropa"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/montserrat_medium"
+                        app:buttonTint="#1565C0" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/rbElectronico"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:text="Electrónico"
+                        android:textSize="13sp"
+                        android:fontFamily="@font/montserrat_medium"
+                        app:buttonTint="#1565C0" />
+                </RadioGroup>
+            </com.google.android.material.card.MaterialCardView>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="24dp" />
+
+            <!-- NOMBRE -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nombre del Producto"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxStrokeColor="#1565C0">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etNombreProducto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+            <!-- MARCA -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Marca"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxStrokeColor="#1565C0">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etMarca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+            <!-- SKU + PRECIO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="SKU"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxStrokeColor="#1565C0">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etSku"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textCapCharacters" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space android:layout_width="12dp" android:layout_height="match_parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Precio ($)"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxStrokeColor="#1565C0">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPrecio"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="numberDecimal" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+            <!-- STOCK -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Stock inicial"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxStrokeColor="#1565C0">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etStock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space android:layout_width="match_parent" android:layout_height="24dp" />
+
+            <!-- DETALLES -->
+            <TextView
+                android:id="@+id/tvDetallesLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:textColor="#0D47A1"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilExtra1"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Fecha caducidad"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxStrokeColor="#1565C0">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etExtra1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space android:layout_width="12dp" android:layout_height="match_parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilExtra2"
+                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Fecha elaboración"
+                    app:boxBackgroundColor="#FFFFFF"
+                    app:boxStrokeColor="#1565C0">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etExtra2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <Space android:layout_width="match_parent" android:layout_height="12dp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilExtra3"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Calorías"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxStrokeColor="#1565C0">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etExtra3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space
+                android:id="@+id/spacerExtra4"
+                android:layout_width="match_parent"
+                android:layout_height="12dp"
+                android:visibility="gone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilExtra4"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Sistema operativo"
+                android:visibility="gone"
+                app:boxBackgroundColor="#FFFFFF"
+                app:boxStrokeColor="#1565C0">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etExtra4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Space android:layout_width="match_parent" android:layout_height="48dp" />
+
+            <!-- BOTÓN -->
+            <Button
+                android:id="@+id/btnGuardarProducto"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:backgroundTint="#1565C0"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="GUARDAR PRODUCTO"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp" />
+
+            <Space android:layout_width="match_parent" android:layout_height="60dp" />
+
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

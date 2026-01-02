@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="32dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#F5F7FA"> <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="¡Bienvenido!"
+    android:textColor="#1A202C"
+    android:textStyle="bold"
+    android:textSize="32sp"
+    android:layout_marginBottom="8dp"
+    android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicia sesión para continuar"
+        android:textColor="#718096"
+        android:textSize="16sp"
+        android:layout_marginBottom="40dp"
+        android:layout_gravity="center_horizontal" />
+
+    <EditText
+        android:id="@+id/edtUser"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Usuario"
+        android:inputType="text"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="@android:drawable/edit_text"
+        android:elevation="2dp"
+        android:layout_marginBottom="16dp"/>
+
+    <EditText
+        android:id="@+id/edtPass"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:background="@android:drawable/edit_text"
+        android:elevation="2dp"
+        android:layout_marginBottom="24dp"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Ingresar"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:backgroundTint="#3182CE"
+        android:elevation="4dp"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnGoRegister"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Crear cuenta"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        style="?android:attr/borderlessButtonStyle"
+        android:textColor="#4A5568" />
+
+</LinearLayout>

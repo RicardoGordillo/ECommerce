@@ -1,0 +1,17 @@
+# Archivos de Android Studio y Gradle
+.gradle/
+/build/
+/app/build/
+/captures/
+
+# Configuraciones locales (Rutas del SDK de TU PC)
+local.properties
+.idea/caches/
+.idea/modules.xml
+.idea/workspace.xml
+.idea/navEditor.xml
+.idea/assetWizardSettings.xml
+
+# Archivos de sistema
+*.iml
+.DS_Store
