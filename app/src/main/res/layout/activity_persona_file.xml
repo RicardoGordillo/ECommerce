@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E3F2FD"> <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="25dp"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/txtTituloRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="REGISTRO DE DATOS"
+        android:textColor="#1565C0"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="#FFFFFF"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <EditText
+                android:id="@+id/edtNombre"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Nombre"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingStart="12dp"
+                android:textColor="#0D47A1"
+                android:background="@android:drawable/editbox_background"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/edtApellido"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Apellido"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingStart="12dp"
+                android:textColor="#0D47A1"
+                android:background="@android:drawable/editbox_background"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/edtCorreo"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Correo electrónico"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingStart="12dp"
+                android:textColor="#0D47A1"
+                android:inputType="textEmailAddress"
+                android:background="@android:drawable/editbox_background"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/edtTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Teléfono"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingStart="12dp"
+                android:textColor="#0D47A1"
+                android:inputType="phone"
+                android:background="@android:drawable/editbox_background"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/edtEdad"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Edad"
+                android:fontFamily="@font/montserrat_medium"
+                android:paddingStart="12dp"
+                android:textColor="#0D47A1"
+                android:inputType="number"
+                android:background="@android:drawable/editbox_background"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnGuardar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Guardar en file.txt"
+        android:fontFamily="@font/montserrat_medium"
+        android:backgroundTint="#1565C0"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_marginBottom="12dp"/>
+
+    <Button
+        android:id="@+id/btnLeer"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Leer file.txt"
+        android:fontFamily="@font/montserrat_medium"
+        android:backgroundTint="#0D47A1"
+        android:textColor="#FFFFFF"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:layout_marginBottom="20dp"/>
+
+    <TextView
+        android:id="@+id/txtLabelResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Información del Archivo:"
+        android:textColor="#0D47A1"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/txtResultado"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:background="#FFFFFF"
+        android:textColor="#1565C0"
+        android:text="Los datos aparecerán aquí..."/>
+</LinearLayout>
+</ScrollView>

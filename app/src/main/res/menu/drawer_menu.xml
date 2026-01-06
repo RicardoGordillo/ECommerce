@@ -14,12 +14,8 @@
         android:icon="@drawable/ic_add"/>
     <item
         android:id="@+id/drawer_pedidos"
-        android:title="Listar todos los pedidos"
+        android:title="Reporte de pedidos"
         android:icon="@drawable/ic_assignment"/>
-    <item
-        android:id="@+id/drawer_reporteVentas"
-        android:title="Reporte de ventas totales"
-        android:icon="@drawable/ic_money"/>
     <item
         android:id="@+id/drawer_masVendidos"
         android:title="Productos mas vendidos"
@@ -28,6 +24,10 @@
         android:id="@+id/drawer_perfil"
         android:title="Perfil"
         android:icon="@drawable/ic_account"/>
+    <item
+        android:id="@+id/drawer_persona_file"
+        android:title="Guardar persona"
+        android:icon="@drawable/ic_add_persona" />
     <item
         android:id="@+id/drawer_logout"
         android:title="Cerrar sesion"

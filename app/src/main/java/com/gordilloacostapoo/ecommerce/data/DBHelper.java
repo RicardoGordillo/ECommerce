@@ -6,20 +6,18 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.google.android.material.navigation.NavigationView;
 import com.gordilloacostapoo.ecommerce.model.Cliente;
 import com.gordilloacostapoo.ecommerce.session.SessionManager;
 
 public class DBHelper extends SQLiteOpenHelper {
     private static final String DB_NAME = "ECommerce.db";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 4;
     public static final String TABLE_USERS = "users";
     public static final String COL_ID = "id";
     public static final String COL_USERNAME = "username";
     public static final String COL_NAME = "name";
     public static final String COL_ADMIN = "admin";
     public static final String COL_PASSWORD = "password";
-    private SessionManager sessionManager;
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -30,12 +28,13 @@ public class DBHelper extends SQLiteOpenHelper {
         String createUsers = "CREATE TABLE " + TABLE_USERS + " (" +
                 COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COL_USERNAME + " TEXT UNIQUE NOT NULL, " +
-                COL_NAME + "TEXT NOT NULL," +
+                COL_NAME + " TEXT NOT NULL," +
+                COL_ADMIN + " INTEGER NOT NULL," +
                 COL_PASSWORD + " TEXT NOT NULL" +
                 ");";
         db.execSQL(createUsers);
         // Usuario de prueba (siempre existe después de instalar)
-        insertUserIfNotExists(db, "admin", "name", "1234");
+        insertUserIfNotExists(db, "admin@correo.com", "name", true, "1234");
     }
 
     @Override
@@ -45,7 +44,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    private void insertUserIfNotExists(SQLiteDatabase db, String username, String name, String password) {
+    private void insertUserIfNotExists(SQLiteDatabase db, String username, String name, boolean admin, String password) {
         Cursor c = db.rawQuery(
                 "SELECT 1 FROM " + TABLE_USERS + " WHERE " + COL_USERNAME + "=? LIMIT 1",
                 new String[]{username}
@@ -56,6 +55,7 @@ public class DBHelper extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             values.put(COL_USERNAME, username);
             values.put(COL_NAME, name);
+            values.put(COL_ADMIN, admin);
             values.put(COL_PASSWORD, password);
             db.insert(TABLE_USERS, null, values);
         }
@@ -80,6 +80,7 @@ public class DBHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COL_USERNAME, username.trim());
         values.put(COL_NAME, name.trim());
+        values.put(COL_ADMIN, false);
         values.put(COL_PASSWORD, password.trim());
         long id = db.insert(TABLE_USERS, null, values);
         return id != -1;
@@ -96,27 +97,26 @@ public class DBHelper extends SQLiteOpenHelper {
         return ok;
     }
 
-    public Cliente getClienteByUsername() {
-        String username = sessionManager.getUsername();
+    public Cliente getClienteByUsername(String username) {
         SQLiteDatabase db = this.getReadableDatabase();
         // Buscamos al usuario por su correo/username
-        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS + " WHERE " + COL_USERNAME + " = ?", new String[]{username});
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_USERS +
+                " WHERE " + COL_USERNAME + " = ?",
+                new String[]{username});
 
         if (cursor.moveToFirst()) {
-            // Suponiendo que tu clase Cliente tiene un constructor: Cliente(nombre, correo, password)
-            // O ajusta según los índices de tus columnas (0: id, 1: username, 2: password)
             Cliente cliente = new Cliente();
+            cliente.setId(cursor.getInt(0));
             cliente.setCorreo(cursor.getString(1));
-            cliente.setNombre(cursor.getString(2)); // Por ahora usamos el correo como nombre
+            cliente.setNombre(cursor.getString(2));
+            int isAdmin = cursor.getInt(3);
+            cliente.setAdmin(isAdmin == 1);
+            cliente.setPassword(cursor.getString(4));
 
             cursor.close();
             return cliente;
         }
         cursor.close();
         return null;
-    }
-
-    public boolean isUserAdmin(){
-
     }
 }

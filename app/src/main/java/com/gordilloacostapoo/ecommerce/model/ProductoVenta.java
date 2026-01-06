@@ -22,4 +22,8 @@ public class ProductoVenta implements Serializable {
     public void sumarCantidad(int cant){
         cantidad += cant;
     }
+
+    public double getTotalRecaudado(){
+        return producto.getprecio() * cantidad;
+    }
 }

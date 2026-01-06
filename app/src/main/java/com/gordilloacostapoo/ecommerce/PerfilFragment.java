@@ -1,6 +1,7 @@
 package com.gordilloacostapoo.ecommerce;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,45 +10,56 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.gordilloacostapoo.ecommerce.data.DBHelper;
+import com.gordilloacostapoo.ecommerce.model.Cliente;
 import com.gordilloacostapoo.ecommerce.model.DataManager;
 import com.gordilloacostapoo.ecommerce.session.SessionManager;
 
 public class PerfilFragment extends Fragment {
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        SessionManager session = new SessionManager(this);
-        String username = session.getUsername();
+        SessionManager session = new SessionManager(getContext());
+        DBHelper db = new DBHelper(getContext());
+
         View view = inflater.inflate(R.layout.fragment_perfil, container, false);
 
-        // Referencias
         TextView tvNombre = view.findViewById(R.id.tvNombrePerfil);
         TextView tvCorreo = view.findViewById(R.id.tvCorreoPerfil);
         Button btnMisCompras = view.findViewById(R.id.btnVerHistorial);
+        TextView tvRolPerfil = view.findViewById(R.id.tvRolPerfil);
 
-        // Mostrar datos del cliente logueado
-        if (DataManager.clienteLogueado != null) {
-            tvNombre.setText(DataManager.clienteLogueado.getNombre());
-            tvCorreo.setText(DataManager.clienteLogueado.getCorreo());
+        Cliente clienteLogueado = db.getClienteByUsername(session.getUsername());
+        if (clienteLogueado != null) {
+            tvNombre.setText(clienteLogueado.getNombre());
+            tvCorreo.setText(clienteLogueado.getCorreo());
         }
 
-        // Configurar clic para ir al Historial
+        if(clienteLogueado.getAdmin()){
+            tvRolPerfil.setText("Administrador");
+        } else {
+            tvRolPerfil.setText("Cliente estándar");
+        }
+
         btnMisCompras.setOnClickListener(v -> {
+            if(clienteLogueado == null) return;
             PedidosFragment fragment = new PedidosFragment();
 
-            // Enviamos un "Bundle" con la señal para filtrar
             Bundle args = new Bundle();
             args.putBoolean("esHistorialPersonal", true);
+            args.putString("correoCliente", clienteLogueado.getCorreo());
             fragment.setArguments(args);
 
-            // Transición
+            Log.d("DEBUG_PERFIL", "Abriendo compras para el usuario: " + session.getUsername());
+
             getParentFragmentManager().beginTransaction()
                     .replace(R.id.fragment_container, fragment)
-                    .addToBackStack(null) // Para poder regresar con el botón atrás
+                    .addToBackStack(null)
                     .commit();
         });
 
         return view;
     }
+
 }

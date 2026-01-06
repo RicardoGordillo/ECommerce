@@ -36,6 +36,15 @@ public class Pedido implements Serializable{
         if(cantidad == 0){
             throw new TiendaException("Error: no se puede agregar un pedido con 0 cantidad de productos.");
         }
+        for(ItemPedido i : items){
+            if(i.getProducto().getcodigoSKU().equalsIgnoreCase(productodeseado.getcodigoSKU())){
+                if(i.getCantidad() + cantidad > productodeseado.getstock()){
+                    throw new TiendaException("Error: no hay suficiente stock para " + productodeseado.getnombre());
+                }
+                i.setCantidad(i.getCantidad() + cantidad);
+                return;
+            }
+        }
         double pu = productodeseado.aplicarDescuento();
         double pf = Math.round(Producto.calcularPrecioFinal(pu));
         items.add(new ItemPedido(productodeseado, cantidad, pf));

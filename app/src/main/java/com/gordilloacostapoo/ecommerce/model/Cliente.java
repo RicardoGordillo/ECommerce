@@ -3,7 +3,8 @@ package com.gordilloacostapoo.ecommerce.model;
 import java.util.Objects;
 import java.io.Serializable;
 
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
+    private int id;
     private String nombre;
     private String correo;
     private static long serialVersionUID = 1L;
@@ -25,6 +26,8 @@ public class Cliente implements Serializable{
         password = null;
     }
 
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
     public String getNombre(){
         return nombre;
     }
@@ -37,7 +40,7 @@ public class Cliente implements Serializable{
     public void setCorreo(String correo){
         this.correo=correo;
     }
-    public boolean getAdmin() {return admin; }
+    public boolean getAdmin() { return admin; }
     public void setAdmin(boolean admin) { this.admin = admin; }
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }

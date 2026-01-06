@@ -87,28 +87,6 @@ abstract public class Producto implements Descontable, Serializable{
                 "Stock: " + stock;
     }
     
-    /*public static boolean validarCodigoSKU(String codigoSKU, HashSet codigosSKU){
-        if(codigoSKU.length() == 8){
-            if(codigosSKU.contains(codigoSKU.toUpperCase())){
-                return false;
-            } else{
-                codigosSKU.add(codigoSKU.toUpperCase());
-                return true;
-            }
-        } else{
-            return false;
-        }
-    }
-    
-    public static boolean validarNombreProd(String nombreProd, HashSet nombres){
-        if(nombres.contains(nombreProd.toLowerCase())){
-                return false;
-            } else{
-                nombres.add(nombreProd.toLowerCase());
-                return true;
-            }
-    }*/
-    
     @Override
     public abstract double aplicarDescuento();
         

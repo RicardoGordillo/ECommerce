@@ -5,79 +5,96 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E3F2FD"
-    android:padding="16dp">
+    android:background="#E3F2FD">
 
-    <TextView
-        android:id="@+id/txtTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="HOME"
-        android:textColor="#1565C0"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:paddingBottom="80dp"
+        android:clipToPadding="false">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <LinearLayout
-        android:id="@+id/searchContainer"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@android:drawable/editbox_background"
-        android:backgroundTint="#FFFFFF"
-        android:orientation="horizontal"
-        android:padding="4dp"
-        app:layout_constraintTop_toBottomOf="@id/txtTitulo"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+            <TextView
+                android:id="@+id/txtTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="HOME"
+                android:textColor="#1565C0"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etBuscar"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="@null"
-            android:fontFamily="@font/montserrat_medium"
-            android:hint="Buscar producto por nombre..."
-            android:inputType="text"
-            android:paddingStart="12dp"
-            android:textColor="#F0E6E6"
-            android:textSize="16sp" />
+            <LinearLayout
+                android:id="@+id/searchContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@android:drawable/editbox_background"
+                android:backgroundTint="#FFFFFF"
+                android:orientation="horizontal"
+                android:padding="4dp">
 
-        <ImageButton
-            android:id="@+id/btnLupa"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:src="@android:drawable/ic_menu_search"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="#1565C0"
-            android:contentDescription="Buscar producto"/>
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/etBuscar"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:fontFamily="@font/montserrat_medium"
+                    android:hint="Buscar producto por nombre..."
+                    android:inputType="text"
+                    android:paddingStart="12dp"
+                    android:textColor="#333333"
+                    android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/txtCatalogo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat_medium"
-        android:text="Catálogo de Productos"
-        android:textColor="#0D47A1"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchContainer" />
+                <ImageButton
+                    android:id="@+id/btnLupa"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_menu_search"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:tint="#1565C0"
+                    android:contentDescription="Buscar producto"/>
+            </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvProductos"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/txtCatalogo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_producto" />
+            <TextView
+                android:id="@+id/txtCatalogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Catálogo de Productos"
+                android:textColor="#0D47A1"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProductos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/item_producto" />
+
+            <Button
+                android:id="@+id/btnPersonaFile"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
+                android:text="Guardar Persona (.txt)"
+                android:textSize="18dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:backgroundTint="#1565C0"
+                app:cornerRadius="20dp"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

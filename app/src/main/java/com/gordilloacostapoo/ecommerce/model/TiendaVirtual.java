@@ -6,34 +6,20 @@ import java.util.ArrayList;
 public class TiendaVirtual implements Serializable{
 
     private ArrayList<Producto> catalogo;
-    private ArrayList<Cliente> clientes;
     private ArrayList<Pedido> pedidosConfirmados;
 
     public TiendaVirtual() {
         catalogo = new ArrayList<>();
-        clientes = new ArrayList<>();
         pedidosConfirmados = new ArrayList<>();
     }
     
     public TiendaVirtual(ArrayList<Producto> catalogo, ArrayList<Cliente> clientes, ArrayList<Pedido> pedidosConfirmados){
         this.catalogo = catalogo;
-        this.clientes = clientes;
         this.pedidosConfirmados = pedidosConfirmados;
     }
 
-    public void registrarProducto(Producto nuevoProducto) throws TiendaException{
+    public void registrarProducto(Producto nuevoProducto) {
         this.catalogo.add(nuevoProducto);
-        System.out.println("Producto " + nuevoProducto.getnombre() + " registrado con exito.");
-    }
-
-    public void registrarCliente(Cliente nuevoCliente) throws TiendaException {
-        for(Cliente clients : this.clientes){
-            if (clients.getCorreo().equalsIgnoreCase(nuevoCliente.getCorreo())) {
-                throw new TiendaException("Error: El email '" + nuevoCliente.getCorreo() + "' ya esta registrado.");
-            }
-        }
-        this.clientes.add(nuevoCliente);
-        System.out.println("Cliente " + nuevoCliente.getNombre() + " registrado con exito.");
     }
 
     public Producto buscarProductoPorNombre(String nombre) throws TiendaException {
@@ -92,14 +78,6 @@ public class TiendaVirtual implements Serializable{
         
         pedidoConfirmado.setFecha(java.time.LocalDate.now());
         this.pedidosConfirmados.add(pedidoConfirmado);
-        
-        System.out.println("###################################");
-        System.out.println("        COMPROBANTE DE VENTA       ");
-        System.out.println("###################################");
-        System.out.println(pedido.toString());
-        System.out.println("###################################");
-        System.out.println("   Muchas gracias por su compra!");
-        System.out.println("###################################");
     }
 
     public void mostrarReporteVentas() {
@@ -118,7 +96,7 @@ public class TiendaVirtual implements Serializable{
         }
     }
     
-    public void listarPedidos(){
+    /*public void listarPedidos(){
         if(pedidosConfirmados.isEmpty()){
             System.out.println("No hay pedidos para listar.");
         } else{
@@ -128,7 +106,7 @@ public class TiendaVirtual implements Serializable{
             }
         }
     }
-    
+
     public void listarPedidosPorCliente(Cliente client){
         if(pedidosConfirmados.isEmpty()){
             System.out.println("No hay pedidos para listar.");
@@ -148,7 +126,7 @@ public class TiendaVirtual implements Serializable{
                 }
             }
         }
-    }
+    }*/
     
     public void listarProdsMasVendidos(){
         if(pedidosConfirmados.isEmpty()){
@@ -185,6 +163,28 @@ public class TiendaVirtual implements Serializable{
                 System.out.println("Producto: " + pv.getProducto().getnombre() + ", cantidad vendida: " + pv.getCantidad());
             }
         }
+    }
+
+    public boolean validarCodigoSKU(String codigoSKU){
+        if(codigoSKU.length() == 8){
+            for(Producto p : catalogo){
+                if(p.getcodigoSKU().equalsIgnoreCase(codigoSKU)){
+                    return false;
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean validarNombreProd(String nombreProd){
+        for(Producto p : catalogo){
+            if(p.getnombre().equalsIgnoreCase(nombreProd)){
+                return false;
+            }
+        }
+        return true;
     }
     
     /*public void guardarTiendaVirtual(){
@@ -229,10 +229,6 @@ public class TiendaVirtual implements Serializable{
     
     public ArrayList<Producto> getCatalogo() {
         return this.catalogo;
-    }
-    
-    public ArrayList<Cliente> getClientes() {
-        return this.clientes;
     }
     
     public ArrayList<Pedido> getPedidosConfirmados() {

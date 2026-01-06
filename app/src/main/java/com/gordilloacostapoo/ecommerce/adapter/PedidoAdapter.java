@@ -30,7 +30,11 @@ public class PedidoAdapter extends RecyclerView.Adapter<PedidoAdapter.ViewHolder
         Pedido pedido = listaPedidos.get(position);
 
         // 1. Cliente y Fecha
-        holder.tvCliente.setText("Cliente: " + pedido.getCliente().getNombre());
+        if (pedido.getCliente() == null) {
+            holder.tvCliente.setText("Cliente desconocido");
+        } else {
+            holder.tvCliente.setText("Cliente: " + pedido.getCliente().getNombre());
+        }
         holder.tvFecha.setText(pedido.getFecha().toString());
 
         // 2. Construir la lista de productos (Similar a tu toString)

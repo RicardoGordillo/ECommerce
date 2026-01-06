@@ -2,11 +2,9 @@ package com.gordilloacostapoo.ecommerce.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.InputMismatchException;
-import java.util.Locale;
-import java.util.Scanner;
-import java.util.ArrayList;
+import java.time.format.DateTimeFormatterBuilder;
 
 public class Validacion implements Serializable {
 
@@ -18,13 +16,7 @@ public class Validacion implements Serializable {
         return valor;
     }
 
-    public static LocalDate validarFecha(String entrada) throws DateTimeParseException {
-        // Simplemente intentamos parsear. Si falla, la Activity capturará el error.
-        return LocalDate.parse(entrada);
-    }
-
     public static int validarValorInt(String texto) throws Exception {
-        // 1. Validar si está vacío
         if (texto.isEmpty()) {
             throw new Exception("El campo no puede estar vacío");
         }

@@ -7,11 +7,14 @@
     app:cardCornerRadius="12dp"
     app:cardElevation="4dp">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="12dp">
+        android:padding="12dp"
+        android:background="#FFFFFF">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -111,11 +114,13 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:gravity="center"
-                    android:inputType="number"
                     android:text="1"
                     android:textSize="15sp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:textColor="#1A237E" />
+                    android:textColor="#1A237E"
+                    android:focusable="false"
+                    android:clickable="false"
+                    android:inputType="none"/>
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btnMas"

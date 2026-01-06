@@ -1,6 +1,7 @@
 package com.gordilloacostapoo.ecommerce.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -8,10 +9,8 @@ import java.util.ArrayList;
 public class Comida extends Producto implements Descontable{
 
     private LocalDate fechaCaducidad;
-    private String tipoComida;
     private LocalDate fechaElaboracion;
     private int calorias;
-    private ArrayList ingredientes;
 
     public Comida(String codigoSKU,
                   String nombre,
@@ -25,7 +24,6 @@ public class Comida extends Producto implements Descontable{
         this.fechaCaducidad = fechaCaducidad;
         this.fechaElaboracion = fechaElaboracion;
         this.calorias = calorias;
-        this.ingredientes = new ArrayList<>();
         settipo("Comida");
     }
 
@@ -53,18 +51,9 @@ public class Comida extends Producto implements Descontable{
         return calorias;
     }
 
-    public void setIngredientes(ArrayList ingredientes) {
-        this.ingredientes = ingredientes;
-    }
-
-    public ArrayList getIngredientes() {
-        return ingredientes;
-    }
-
     @Override
     public String toString(){
-        return super.toString() + "\nTipo: " + tipoComida +
-                "\nIngredientes: " + ingredientes +
+        return super.toString() +
                 "\nCalorias: " + calorias + "kcal" +
                 "\nFecha de Elaboracion: " + fechaElaboracion +
                 "\nFecha de Vencimiento: " + fechaCaducidad;

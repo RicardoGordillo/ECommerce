@@ -17,7 +17,7 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         db = new DBHelper(this);
         edtUser = findViewById(R.id.edtNewUser);
-        edtName
+        edtName = findViewById(R.id.edtNewName);
         edtPass1 = findViewById(R.id.edtNewPass);
         edtPass2 = findViewById(R.id.edtNewPass2);
         Button btnRegister = findViewById(R.id.btnRegister);
